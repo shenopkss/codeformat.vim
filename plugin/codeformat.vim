@@ -30,4 +30,5 @@ for r in data.split('\n'):
 EOF
 endfunction
 
-noremap <Leader>hf :call HtmlCodeFormat()<CR><Esc>:set filetype=html
+noremap <Leader>hf :call HtmlCodeFormat()<CR><Esc>:set filetype=html<CR>
+noremap <Leader>jf <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>

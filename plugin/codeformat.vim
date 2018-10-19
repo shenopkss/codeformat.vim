@@ -1,10 +1,13 @@
-function! Foo()
+function! HtmlCodeFormat()
 python3 << EOF
 import vim
 import json
 import http.client, urllib.parse
 
-source = '<div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>'
+source = ''
+for b in  vim.current.buffer:
+    source += b + "\n"
+
 params = urllib.parse.urlencode({'html': source})
 headers = {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8", "Accept": "application/json"}
 url='http://tool.oschina.net/action/format/html'
@@ -26,3 +29,5 @@ for r in data.split('\n'):
     i += 1
 EOF
 endfunction
+
+noremap <Leader>hf :call HtmlCodeFormat()<CR><Esc>:set filetype=html
